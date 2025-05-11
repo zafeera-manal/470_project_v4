@@ -80,7 +80,7 @@ Route::prefix('group-trips')->group(function () {
     Route::post('invitations/{id}/reject', [GroupTripController::class, 'rejectInvitation'])->name('group_trips.rejectInvitation');
 });
 
-use App\Http\Controllers\AdminController;
+/*use App\Http\Controllers\AdminController;
 
 // Admin Dashboard route (protected by auth middleware)
 Route::middleware('auth')->get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -99,3 +99,33 @@ Route::delete('/admin/users/{id}', [AdminController::class, 'destroy'])->name('a
 
 // Route for Admin to view all itineraries
 Route::get('/admin/itineraries', [AdminController::class, 'viewItineraries'])->name('admin.itineraries.index');
+
+// routes/web.php
+use App\Http\Controllers\NotificationController;
+Route::get('/admin/send-notification', [NotificationController::class, 'viewNotifications'])->name('admin.notifications.index');
+Route::post('/admin/send-notification', [NotificationController::class, 'sendNotification'])->name('admin.sendNotification');*/
+
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NotificationController;
+
+// Group the admin routes for better management
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
+    // Send Notification Route
+    Route::get('/send-notification', [NotificationController::class, 'viewNotifications'])->name('admin.notifications.index');
+    Route::post('/send-notification', [NotificationController::class, 'sendNotification'])->name('admin.sendNotification');
+    
+    // Other admin routes
+    Route::get('/users', [AdminController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/create', [AdminController::class, 'create'])->name('admin.users.create');
+    Route::post('/users', [AdminController::class, 'store'])->name('admin.users.store');
+    Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('/itineraries', [AdminController::class, 'viewItineraries'])->name('admin.itineraries.index');
+});
+
+
+Route::middleware('auth')->get('/notifications', [NotificationController::class, 'userNotifications'])->name('user.notifications');
+
+
+

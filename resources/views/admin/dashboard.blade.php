@@ -29,6 +29,17 @@
             </div>
         </div>
 
+       <!-- Send Notifications Section -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Send Notifications</h5>
+                    <p class="card-text">Send notifications to all users of the platform.</p>
+                    <a href="{{ route('admin.notifications.index') }}" class="btn btn-primary w-100">Send Notification</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Other Admin Functions Section -->
         <div class="col-md-4">
             <div class="card shadow-sm">

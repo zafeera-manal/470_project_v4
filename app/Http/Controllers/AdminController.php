@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User; // Import the User model
 use App\Models\Itinerary;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -68,7 +69,7 @@ class AdminController extends Controller
         // Return the view with the itineraries data
         return view('admin.itineraries.index', compact('itineraries'));
     }
-
+    
    
 
 }
