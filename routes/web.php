@@ -79,3 +79,23 @@ Route::prefix('group-trips')->group(function () {
     Route::post('invitations/{id}/accept', [GroupTripController::class, 'acceptInvitation'])->name('group_trips.acceptInvitation');
     Route::post('invitations/{id}/reject', [GroupTripController::class, 'rejectInvitation'])->name('group_trips.rejectInvitation');
 });
+
+use App\Http\Controllers\AdminController;
+
+// Admin Dashboard route (protected by auth middleware)
+Route::middleware('auth')->get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+// Route to display the user list
+Route::get('/admin/users', [AdminController::class, 'index'])->name('admin.users.index');
+
+// Route to show the form to add a new user
+Route::get('/admin/users/create', [AdminController::class, 'create'])->name('admin.users.create');
+
+// Route to store a new user
+Route::post('/admin/users', [AdminController::class, 'store'])->name('admin.users.store');
+
+// Route to delete a user
+Route::delete('/admin/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy'); 
+
+// Route for Admin to view all itineraries
+Route::get('/admin/itineraries', [AdminController::class, 'viewItineraries'])->name('admin.itineraries.index');
