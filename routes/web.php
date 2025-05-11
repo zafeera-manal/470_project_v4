@@ -99,6 +99,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/itineraries', [AdminController::class, 'viewItineraries'])->name('admin.itineraries.index');
 });
 
+
+// Route for Admin to view all group trips
+Route::middleware('auth')->get('/admin/group-trips', [AdminController::class, 'viewGroupTrips'])->name('admin.group_trips.index');
+
+
 Route::middleware('auth')->get('/admin/notifications', [AdminController::class, 'viewNotifications'])->name('admin.notifications.index');
 
 

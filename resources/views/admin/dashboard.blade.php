@@ -39,18 +39,18 @@
                 </div>
             </div>
         </div>
-
-        <!-- Other Admin Functions Section -->
+        <!-- Send Notifications Section -->
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Group Trips</h5>
-                    <p class="card-text">Access other features like managing destinations, or site content.</p>
-                    <!-- You can add more options here -->
-                    <a href="#" class="btn btn-primary w-100">Other Functions</a>
+                    <h5 class="card-title">View Group Trips</h5>
+                    <p class="card-text">View, edit, or delete group trips created by users.</p>
+                    <a href="{{ route('admin.group_trips.index') }}" class="btn btn-primary w-100">View Group Trips</a>
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 @endsection

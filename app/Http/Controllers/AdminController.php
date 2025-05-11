@@ -6,6 +6,7 @@ use App\Models\User; // Import the User model
 use App\Models\Itinerary;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Models\GroupTrip;
 
 class AdminController extends Controller
 {
@@ -74,6 +75,18 @@ class AdminController extends Controller
         return view('admin.itineraries.index', compact('itineraries'));
     }
     
+    public function viewGroupTrips()
+{
+    // Fetch all group trips created by any user (excluding the admin ones)
+    $groupTrips = GroupTrip::with('user') // Eager load the user who created the trip
+                        ->orderBy('created_at', 'desc') // Show the latest created trips first
+                        ->get();
+
+    // Return the view and pass the group trips to it
+    return view('admin.group_trips.index', compact('groupTrips'));
+}
+
+
     public function viewNotifications()
 {
     // Use a raw SQL query to fetch distinct notifications based on title and message
