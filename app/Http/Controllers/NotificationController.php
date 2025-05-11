@@ -30,6 +30,7 @@ class NotificationController extends Controller
         $users = User::all();
 
         // Create and store notifications for each user
+        
         foreach ($users as $user) {
             Notification::create([
                 'title' => $request->title,
@@ -37,9 +38,11 @@ class NotificationController extends Controller
                 'user_id' => $user->id, // Associate notification with each user
             ]);
         }
+        
 
         return redirect()->route('admin.notifications.index')->with('success', 'Notifications sent successfully!');
     }
+    
     public function userNotifications()
     {
         // Get the logged-in user's notifications

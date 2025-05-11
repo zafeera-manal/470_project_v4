@@ -44,7 +44,7 @@
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Other Admin Functions</h5>
+                    <h5 class="card-title">Group Trips</h5>
                     <p class="card-text">Access other features like managing destinations, or site content.</p>
                     <!-- You can add more options here -->
                     <a href="#" class="btn btn-primary w-100">Other Functions</a>

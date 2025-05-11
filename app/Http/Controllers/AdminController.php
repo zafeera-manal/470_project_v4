@@ -13,7 +13,11 @@ class AdminController extends Controller
     public function dashboard()
     {
         // Return the view for the admin dashboard
-        return view('admin.dashboard'); // Make sure you have the view 'admin.dashboard'
+        $notifications = Notification::orderByDesc('created_at')->take(5)->get(); // You can modify the number of notifications to show
+
+        // Return the view for the admin dashboard and pass the notifications
+        return view('admin.dashboard', compact('notifications'));
+        //return view('admin.dashboard'); // Make sure you have the view 'admin.dashboard'
     }
     // Display the list of users
     public function index()
@@ -70,6 +74,19 @@ class AdminController extends Controller
         return view('admin.itineraries.index', compact('itineraries'));
     }
     
+    public function viewNotifications()
+{
+    // Use a raw SQL query to fetch distinct notifications based on title and message
+    $notifications = Notification::select('title', 'message', 'created_at')
+        ->distinct() // Ensure no duplicate notifications based on title and message
+        ->orderByDesc('created_at')  // Order by the latest notification
+        ->get();
+
+    // Return the view with the notifications data
+    return view('admin.notifications.index', compact('notifications'));
+}
+
+
    
 
 }
