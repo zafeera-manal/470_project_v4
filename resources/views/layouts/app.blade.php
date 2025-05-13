@@ -57,6 +57,15 @@
                                         @endif
                                     @endauth
                                 </li>
+                                <li>
+                                    @auth
+                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
+                                            <a href="{{ route('admin.notifications.index') }}">Notifications</a>
+                                        @else
+                                            <a href="{{ route('user.notifications') }}">Notifications</a>
+                                        @endif
+                                    @endauth
+                                </li>
 
                                 <li>
                                     @auth
