@@ -40,53 +40,10 @@
                             <!--<a href="{{ url('/') }}" class="logo">
                                 <img src="{{ asset('assets/images/logo.png') }}" alt="">
                             </a>-->
-                            <h1><span class="logo" style="color: #fcbad3;">TravelBuddy</span></h1>
+                            <h1><a href="{{ url('/') }}"><span class="logo" style="color:rgb(255, 255, 255);">TravelCom</span></a></h1>
                             <!-- ***** Logo End ***** -->
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
-                                <!--<li><a href="{{ route('friends.index') }}">Friends</a></li>
-                                <li><a href="{{ route('itineraries.index')}}">Itineraries</a></li>
-                                <li><a href="{{ route('group_trips.index') }}">Group Trips</a></li>-->
-
-                                <li>
-                                    @auth
-                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
-                                            <a href="#">Friends</a>
-                                        @else
-                                            <a href="{{ route('friends.index') }}">Friends</a>
-                                        @endif
-                                    @endauth
-                                </li>
-                                <li>
-                                    @auth
-                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
-                                            <a href="{{ route('admin.notifications.index') }}">Notifications</a>
-                                        @else
-                                            <a href="{{ route('user.notifications') }}">Notifications</a>
-                                        @endif
-                                    @endauth
-                                </li>
-
-                                <li>
-                                    @auth
-                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
-                                            <a href="#">Itineraries</a>
-                                        @else
-                                            <a href="{{ route('itineraries.index') }}">Itineraries</a>
-                                        @endif
-                                    @endauth
-                                </li>
-
-                                <li>
-                                    @auth
-                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
-                                            <a href="#">Group Trips</a>
-                                        @else
-                                            <a href="{{ route('group_trips.index') }}">Group Trips</a>
-                                        @endif
-                                     @endauth
-                                </li>
-                                
                                 
                                 @guest
                                     @if (Route::has('login'))
@@ -96,15 +53,21 @@
                                         <li><a href="{{ route('register') }}">Register</a></li>
                                     @endif
                                 @else
-                                    <li>
+                                    
                                         @auth
                                             @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
-                                                <a href="{{ route('admin.dashboard') }}">Hi, {{ Auth::user()->name }}!</a>
+                                                <li><a href="{{ route('admin.dashboard') }}">Hi, {{ Auth::user()->name }}!</a></li>
+                                                <li><a href="{{ route('admin.notifications.index') }}">Notifications</a></li>
+                                            
                                             @else
-                                                <a href="{{ route('home') }}">Hi, {{ Auth::user()->name }}!</a>
+                                                <li><a href="{{ route('home') }}">Hi, {{ Auth::user()->name }}!</a></li>
+                                                <li><a href="{{ route('friends.index') }}">Friends</a></li>
+                                                <li><a href="{{ route('itineraries.index')}}">Itineraries</a></li>
+                                                <li><a href="{{ route('group_trips.index') }}">Group Trips</a></li>
+                                                <li><a href="{{ route('user.notifications') }}">Notifications</a></li>
                                             @endif
                                         @endauth
-                                    </li>
+                                    
 
                                     <!--<li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -157,7 +120,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                <p>Copyright © 2036 <a href="#">WoOx Travel</a> Company. All rights reserved. 
+                
                 <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a> Distribution: <a href="https://themewagon.com target="_blank" >ThemeWagon</a></p>
                 </div>
             </div>

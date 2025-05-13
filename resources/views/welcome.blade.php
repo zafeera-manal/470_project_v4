@@ -58,8 +58,8 @@
 
 <div class="pastel-hero">
     <div class="glass-card">
-        <h1>Welcome to <span style="color: #fcbad3;">TravelBuddy</span> 🌸</h1>
-        <p>Plan your dream trips and share your travel magic ✨</p>
+        <h1>Welcome to <span style="color: #fcbad3;">TravelCom</span> 🌸</h1>
+        <p>Plan your dream trips and share your travel magic!</p>
         @guest
             <a href="{{ route('register') }}" class="btn">Register now!</a>
         @else
