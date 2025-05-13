@@ -44,9 +44,39 @@
                             <!-- ***** Logo End ***** -->
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
-                                <li><a href="{{ route('friends.index') }}">Friends</a></li>
+                                <!--<li><a href="{{ route('friends.index') }}">Friends</a></li>
                                 <li><a href="{{ route('itineraries.index')}}">Itineraries</a></li>
-                                <li><a href="{{ route('group_trips.index') }}">Group Trips</a></li>
+                                <li><a href="{{ route('group_trips.index') }}">Group Trips</a></li>-->
+
+                                <li>
+                                    @auth
+                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
+                                            <a href="#">Friends</a>
+                                        @else
+                                            <a href="{{ route('friends.index') }}">Friends</a>
+                                        @endif
+                                    @endauth
+                                </li>
+
+                                <li>
+                                    @auth
+                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
+                                            <a href="#">Itineraries</a>
+                                        @else
+                                            <a href="{{ route('itineraries.index') }}">Itineraries</a>
+                                        @endif
+                                    @endauth
+                                </li>
+
+                                <li>
+                                    @auth
+                                        @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
+                                            <a href="#">Group Trips</a>
+                                        @else
+                                            <a href="{{ route('group_trips.index') }}">Group Trips</a>
+                                        @endif
+                                     @endauth
+                                </li>
                                 
                                 
                                 @guest
