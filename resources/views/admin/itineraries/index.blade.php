@@ -32,13 +32,9 @@
                     <td>{{ \Carbon\Carbon::parse($itinerary->end_date)->format('F d, Y') }}</td>
                     <td>${{ number_format($itinerary->budget, 2) }}</td>
                     <td>
-                        <!-- Actions (e.g., view, delete itinerary) -->
-                        <a href="{{ route('itineraries.show', $itinerary->id) }}" class="btn btn-info btn-sm">View</a>
-                        <form action="{{ route('itineraries.destroy', $itinerary->id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
+                        <!-- Actions (View only for admin) -->
+                        <a href="{{ route('admin.itineraries.show', $itinerary->id) }}" class="btn btn-info btn-sm">View</a>
+                        
                     </td>
                 </tr>
             @endforeach

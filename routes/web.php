@@ -97,8 +97,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('/users', [AdminController::class, 'store'])->name('admin.users.store');
     Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/itineraries', [AdminController::class, 'viewItineraries'])->name('admin.itineraries.index');
+    
+    // Show itinerary details (admin-only view)
+    Route::get('/itineraries/{id}', [AdminController::class, 'showItinerary'])->name('admin.itineraries.show');
 });
 
+
+// Admin Routes
 
 // Route for Admin to view all group trips
 Route::middleware('auth')->get('/admin/group-trips', [AdminController::class, 'viewGroupTrips'])->name('admin.group_trips.index');

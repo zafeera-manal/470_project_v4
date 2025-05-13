@@ -66,15 +66,26 @@ class AdminController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully!');
     }
-    public function viewItineraries()
-    {
-        // Fetch all itineraries with user data (eager loading)
-        $itineraries = Itinerary::with('user')->get();
-
-        // Return the view with the itineraries data
-        return view('admin.itineraries.index', compact('itineraries'));
-    }
     
+
+    public function viewItineraries()
+{
+    // Fetch all itineraries with user data (eager loading)
+    $itineraries = Itinerary::with('user')->get();
+
+    // Return the view with the itineraries data for admin
+    return view('admin.itineraries.index', compact('itineraries'));
+}
+
+    public function showItinerary($id)
+    {
+        // Fetch a single itinerary with its user data (eager loading)
+        $itinerary = Itinerary::with('user')->findOrFail($id);
+
+        // Return the view to show the details without the share functionality for admin
+        return view('admin.itineraries.show', compact('itinerary'));
+    }
+
     public function viewGroupTrips()
 {
     // Fetch all group trips created by any user (excluding the admin ones)
