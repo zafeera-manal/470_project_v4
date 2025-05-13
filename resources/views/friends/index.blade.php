@@ -39,7 +39,7 @@
                         <div class="card shadow-sm">
                             <div class="card-body text-center">
                                 <!-- Avatar Image -->
-                                <img src="{{ $friend->avatar_url ?? 'https://picsum.photos/150' }}" alt="Avatar" class="img-fluid rounded-circle mb-3" style="width: 80px; height: 80px; object-fit: cover;">
+                                <!--<img src="{{ $friend->avatar_url ?? 'https://picsum.photos/150' }}" alt="Avatar" class="img-fluid rounded-circle mb-3" style="width: 80px; height: 80px; object-fit: cover;">-->
                                 <h5 class="card-title">{{ $friend->name }}</h5>
                                 <p class="card-text text-muted">{{ $friend->email }}</p>
                                 <a href="{{ route('messages.fetch', $friend->id) }}" class="btn btn-outline-primary btn-sm">Chat</a>
@@ -63,7 +63,7 @@
                         <div class="card shadow-sm">
                             <div class="card-body text-center">
                                 <!-- Avatar Image -->
-                                <img src="{{ $user->avatar_url ?? 'https://picsum.photos/150' }}" alt="Avatar" class="img-fluid rounded-circle mb-3" style="width: 80px; height: 80px; object-fit: cover;">
+                                <!--<img src="{{ $user->avatar_url ?? 'https://picsum.photos/150' }}" alt="Avatar" class="img-fluid rounded-circle mb-3" style="width: 80px; height: 80px; object-fit: cover;">-->
                                 <h5 class="card-title">{{ $user->name }}</h5>
                                 <p class="card-text text-muted">{{ $user->email }}</p>
 
