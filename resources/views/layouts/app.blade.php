@@ -47,7 +47,7 @@
                                 <li><a href="{{ route('friends.index') }}">Friends</a></li>
                                 <li><a href="{{ route('itineraries.index')}}">Itineraries</a></li>
                                 <li><a href="{{ route('group_trips.index') }}">Group Trips</a></li>
-                                <li><a href="#">Deals</a></li>
+                                
                                 
                                 @guest
                                     @if (Route::has('login'))
@@ -57,7 +57,16 @@
                                         <li><a href="{{ route('register') }}">Register</a></li>
                                     @endif
                                 @else
-                                    <li><a href="#">Hi, {{ Auth::user()->name }}!</a></li>
+                                    <li>
+                                        @auth
+                                            @if (Auth::user()->role == 1) <!-- Check if the user is an admin -->
+                                                <a href="{{ route('admin.dashboard') }}">Hi, {{ Auth::user()->name }}!</a>
+                                            @else
+                                                <a href="{{ route('home') }}">Hi, {{ Auth::user()->name }}!</a>
+                                            @endif
+                                        @endauth
+                                    </li>
+
                                     <!--<li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             Hi, {{ Auth::user()->name }}!

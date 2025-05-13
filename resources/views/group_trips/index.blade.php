@@ -4,6 +4,11 @@
 <div class="container py-5">
     <h1 class="text-center mb-4">My Group Trips</h1>
 
+        <!-- Button to Create New trip -->
+    <div class="text-center mb-4">
+        <a href="{{ route('group_trips.create') }}" class="btn btn-primary btn-lg">Create New Group Trip</a>
+    </div>
+
     @if($groupTrips->isEmpty())
         <p class="text-center">You haven't created any group trips yet.</p>
     @else
