@@ -4,7 +4,6 @@
 <div class="container py-5">
     <h1 class="text-center mb-4">All User Itineraries</h1>
 
-    <!-- Display success message after performing an action -->
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -26,13 +25,13 @@
         <tbody>
             @foreach($itineraries as $itinerary)
                 <tr>
-                    <td>{{ $itinerary->user->name }}</td> <!-- Display user's name -->
+                    <td>{{ $itinerary->user->name }}</td> 
                     <td>{{ $itinerary->destination }}</td>
                     <td>{{ \Carbon\Carbon::parse($itinerary->start_date)->format('F d, Y') }}</td>
                     <td>{{ \Carbon\Carbon::parse($itinerary->end_date)->format('F d, Y') }}</td>
                     <td>${{ number_format($itinerary->budget, 2) }}</td>
                     <td>
-                        <!-- Actions (View only for admin) -->
+                        
                         <a href="{{ route('admin.itineraries.show', $itinerary->id) }}" class="btn btn-info btn-sm">View</a>
                         
                     </td>

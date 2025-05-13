@@ -9,7 +9,7 @@
         <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Add New User</a>
     </div>
 
-    <!-- Display success message after user is added or deleted -->
+    
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

@@ -83,11 +83,11 @@ Route::prefix('group-trips')->group(function () {
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NotificationController;
 
-// Group the admin routes for better management
+//admin routes
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     
-    // Send Notification Route
+    // Send and view notification route
     Route::get('/send-notification', [NotificationController::class, 'viewNotifications'])->name('admin.notifications.index');
     Route::post('/send-notification', [NotificationController::class, 'sendNotification'])->name('admin.sendNotification');
     
@@ -98,20 +98,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
     Route::get('/itineraries', [AdminController::class, 'viewItineraries'])->name('admin.itineraries.index');
     
-    // Show itinerary details (admin-only view)
+    //itinerary details (admin view)
     Route::get('/itineraries/{id}', [AdminController::class, 'showItinerary'])->name('admin.itineraries.show');
 });
 
 
-// Admin Routes
-
 // Route for Admin to view all group trips
 Route::middleware('auth')->get('/admin/group-trips', [AdminController::class, 'viewGroupTrips'])->name('admin.group_trips.index');
 
-
+//Route to view notifications on admin side
 Route::middleware('auth')->get('/admin/notifications', [AdminController::class, 'viewNotifications'])->name('admin.notifications.index');
 
-
+//Route to view notifications on user side
 Route::middleware('auth')->get('/notifications', [NotificationController::class, 'userNotifications'])->name('user.notifications');
 
 

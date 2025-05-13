@@ -1,5 +1,3 @@
-<!-- resources/views/admin/dashboard.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -7,7 +5,7 @@
     <h1 class="display-4 text-center mb-4">Admin Dashboard</h1>
 
     <div class="row">
-        <!-- Manage Users Section -->
+        
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -18,7 +16,7 @@
             </div>
         </div>
 
-        <!-- View Itineraries Section -->
+        
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -29,7 +27,7 @@
             </div>
         </div>
 
-       <!-- Send Notifications Section -->
+      
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body">

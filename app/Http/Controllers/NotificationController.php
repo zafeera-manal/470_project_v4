@@ -12,7 +12,7 @@ class NotificationController extends Controller
     // View notifications (for admin to see all sent notifications)
     public function viewNotifications()
     {
-        // Fetch all notifications ordered by the latest first
+        //latest notification first
         $notifications = Notification::orderByDesc('created_at')->get();
         return view('admin.notifications.index', compact('notifications'));
     }
@@ -20,22 +20,21 @@ class NotificationController extends Controller
     // Send notification to all users
     public function sendNotification(Request $request)
     {
-        // Validate the notification input
         $request->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string',
         ]);
 
-        // Get all users
+        
         $users = User::all();
 
-        // Create and store notifications for each user
+        //creating notifications for each user
         
         foreach ($users as $user) {
             Notification::create([
                 'title' => $request->title,
                 'message' => $request->message,
-                'user_id' => $user->id, // Associate notification with each user
+                'user_id' => $user->id, //notification with each user
             ]);
         }
         
@@ -45,12 +44,11 @@ class NotificationController extends Controller
     
     public function userNotifications()
     {
-        // Get the logged-in user's notifications
-        $notifications = Notification::where('user_id', auth()->id())  // Get notifications where the user_id matches the logged-in user
-                                    ->orderByDesc('created_at')        // Sort them by the latest
-                                    ->get();                          // Retrieve the notifications
+        //notifications on the user side
+        $notifications = Notification::where('user_id', auth()->id())  
+                                    ->orderByDesc('created_at')        
+                                    ->get();   // retrieving notifications
 
-        // Return the view and pass the notifications
         return view('user.notifications.index', compact('notifications'));
     }
 }
