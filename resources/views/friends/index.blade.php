@@ -7,7 +7,7 @@
         
     </div>
 
-    <!-- Search Bar to Search Friends -->
+    <!--Search Bar-->
     <form action="{{ route('friends.search') }}" method="GET" class="mb-4">
         <div class="input-group input-group-lg" style="max-width: 500px; margin: 0 auto;">
             <input type="text" name="search" class="form-control form-control-lg" placeholder="Search for users by name" value="{{ request('search') }}" aria-label="Search for users by name">
@@ -20,12 +20,12 @@
 
 
 
-    <!-- Button to go to Pending Friend Requests -->
+    <!--Button Pending Friend Requests-->
     <div class="text-center mb-4">
         <a href="{{ route('friends.pending') }}" class="btn btn-info btn-lg">View Pending Friend Requests</a>
     </div>
 
-    <!-- Current Friends Section -->
+    <!--Current Friends-->
     @if ($friends->isEmpty())
         <div class="bg-white p-4 rounded shadow-sm text-center">
             <p class="h5 text-secondary">You don't have any friends yet.</p>
@@ -51,7 +51,7 @@
         </div>
     @endif
 
-    <!-- Users You Can Add as Friends Section -->
+    <!-- Users to Add as Friends-->
     <div class="bg-white p-4 rounded shadow-sm">
         <h2 class="h4 font-weight-semibold text-dark mb-4">Find more friends</h2>
         @if ($usersToAdd->isEmpty())
@@ -67,15 +67,15 @@
                                 <h5 class="card-title">{{ $user->name }}</h5>
                                 <p class="card-text text-muted">{{ $user->email }}</p>
 
-                                <!-- Conditionally Display Buttons -->
+                                
                                 @if($user->request_sent)
-                                    <!-- Undo Friend Request Button -->
+                                    
                                     <form action="{{ route('friends.undo', $user->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-warning btn-sm">Undo Request</button>
                                     </form>
                                 @else
-                                    <!-- Send Friend Request Button -->
+                                    
                                     <form action="{{ route('friends.sendRequest', $user->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-primary btn-sm">Send Friend Request</button>

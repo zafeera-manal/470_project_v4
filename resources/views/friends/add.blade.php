@@ -10,7 +10,7 @@
             @foreach($users as $user)
                 <li>
                     <p>{{ $user->name }} ({{ $user->email }})</p>
-                    <!-- Form to send a friend request -->
+                    <!--form to send friend request-->
                     <form action="{{ route('friends.sendRequest', $user->id) }}" method="POST">
                         @csrf
                         <button type="submit">Send Friend Request</button>

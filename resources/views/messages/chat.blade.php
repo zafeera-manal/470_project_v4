@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container py-5">
-    <!-- Chat Box Container with reduced width and margin-top -->
+    <!-- Chat Box Container -->
     <div class="card shadow-lg mx-auto" style="max-width: 600px; margin-top: 100px; position: relative;">
         
-        <!-- Close Button in Top Right Corner -->
+        
         <a href="{{ route('friends.index') }}" class="btn btn-danger btn-sm" style="position: absolute; top: 10px; right: 10px;">&times;</a>
 
         <div class="card-header text-center">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <!-- Message Input and Send Button -->
+            
             <form action="{{ route('messages.send', $receiver->id) }}" method="POST" class="d-flex">
                 @csrf
                 <input type="text" name="message" class="form-control mr-2" placeholder="Type your message..." required>
